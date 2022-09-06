@@ -10,6 +10,10 @@ public abstract class Contact {
         this.telefonnummer = telefonnummer;
     }
 
+    public Contact() {
+
+    }
+
     public String getName(){
         return name;
     }
