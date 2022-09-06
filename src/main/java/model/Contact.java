@@ -20,4 +20,12 @@ public abstract class Contact {
     public String getTelefonnummer(){
         return telefonnummer;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", telefonnummer='" + telefonnummer + '\'' +
+                '}';
+    }
 }

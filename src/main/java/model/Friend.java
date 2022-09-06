@@ -1,15 +1,15 @@
 package model;
 
 public class Friend extends Contact{
-    private String spitzname;
+    private String nickname;
 
     public Friend(){
         super();
     }
 
-    public Friend(String name, String telefonnummer, String spitzname) {
+    public Friend(String name, String telefonnummer, String nickname) {
         super(name, telefonnummer);
-        this.spitzname = spitzname;
+        this.nickname = nickname;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Friend extends Contact{
         return "Friend{" +
                 "name='" + getName() + '\'' +
                 ", telefonnummer='" + getTelefonnummer() + '\'' +
-                ", spitzname='" + spitzname + '\'' +
+                ", spitzname='" + nickname + '\'' +
                 '}';
     }
 }
