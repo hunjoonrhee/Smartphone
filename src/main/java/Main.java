@@ -20,6 +20,8 @@ public class Main {
         System.out.println(smartphone.getPosition());
         System.out.println(smartphone);
         System.out.println(smartphone.getContact(2));
+        smartphone.removeContactByName("Joon");
+        System.out.println(smartphone);
 
     }
 }

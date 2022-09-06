@@ -54,6 +54,28 @@ public class Smartphone implements Radio, GPS{
         }
     }
 
+    public Contact getContactByName(String name){
+        int index = 0;
+        for(Contact contact:contacts){
+            if(contact.getName().equals(name)){
+                index = contacts.indexOf(contact);
+                break;
+            }
+        }
+        return getContact(index);
+    }
+
+    public void removeContactByName(String name){
+        int index = 0;
+        for(Contact contact:contacts){
+            if(contact.getName().equals(name)){
+                index = contacts.indexOf(contact);
+                break;
+            }
+        }
+        contacts.remove(index);
+    }
+
     @Override
     public String getPosition() {
         return "Köln";

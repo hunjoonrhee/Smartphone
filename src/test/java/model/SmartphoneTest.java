@@ -323,4 +323,99 @@ class SmartphoneTest {
                 '}';
         assertEquals(expectedToString, actual.toString());
     }
+
+    @Test
+    void getContactByNameTestForTrue(){
+        // GIVEN
+
+        ArrayList<Contact> contacts = new ArrayList<>();
+        contacts.add(new Friend("Joon", "017612345678", "Joonie"));
+        contacts.add(new Friend("Eunjoo", "0123456789", "Joo"));
+        String modells = "GalaxyS22";
+        String manufatures = "Samsung";
+        Smartphone smartphone = new Smartphone(modells, manufatures, contacts);
+        // WHEN
+        Contact actual = smartphone.getContactByName("Eunjoo");
+
+
+        // THEN
+        String expectedToString =
+                "Friend{" +
+                        "name='" + "Eunjoo" + '\'' +
+                        ", telefonnummer='" + "0123456789" + '\'' +
+                        ", spitzname='" + "Joo" + '\'' +
+                        '}';
+        assertEquals(expectedToString, actual.toString());
+    }
+    @Test
+    void getContactByNameTestForFalse(){
+        // GIVEN
+
+        ArrayList<Contact> contacts = new ArrayList<>();
+        contacts.add(new Friend("Joon", "017612345678", "Joonie"));
+        contacts.add(new Friend("Eunjoo", "0123456789", "Joo"));
+        String modells = "GalaxyS22";
+        String manufatures = "Samsung";
+        Smartphone smartphone = new Smartphone(modells, manufatures, contacts);
+        // WHEN
+        Contact actual = smartphone.getContactByName("Joon");
+
+
+        // THEN
+        String expectedToString =
+                "Friend{" +
+                        "name='" + "Eunjoo" + '\'' +
+                        ", telefonnummer='" + "0123456789" + '\'' +
+                        ", spitzname='" + "Joo" + '\'' +
+                        '}';
+        assertFalse(expectedToString.equals(actual.toString()));
+    }
+    @Test
+    void removeContactByNameTestForTrue(){
+        // GIVEN
+
+        ArrayList<Contact> contacts = new ArrayList<>();
+        contacts.add(new Friend("Joon", "017612345678", "Joonie"));
+        contacts.add(new Friend("Eunjoo", "0123456789", "Joo"));
+        String modells = "GalaxyS22";
+        String manufatures = "Samsung";
+        Smartphone smartphone = new Smartphone(modells, manufatures, contacts);
+        smartphone.removeContactByName("Joon");
+        // WHEN
+        ArrayList<Contact> actual = smartphone.getContacts();
+
+
+        // THEN
+        String expectedToString =
+                "[Friend{" +
+                        "name='" + "Eunjoo" + '\'' +
+                        ", telefonnummer='" + "0123456789" + '\'' +
+                        ", spitzname='" + "Joo" + '\'' +
+                        '}'+"]";
+        assertEquals(expectedToString, actual.toString());
+    }
+    @Test
+    void removeContactByNameTestForFalse(){
+        // GIVEN
+
+        ArrayList<Contact> contacts = new ArrayList<>();
+        contacts.add(new Friend("Joon", "017612345678", "Joonie"));
+        contacts.add(new Friend("Eunjoo", "0123456789", "Joo"));
+        String modells = "GalaxyS22";
+        String manufatures = "Samsung";
+        Smartphone smartphone = new Smartphone(modells, manufatures, contacts);
+        smartphone.removeContactByName("Joon");
+        // WHEN
+        ArrayList<Contact> actual = smartphone.getContacts();
+
+
+        // THEN
+        String expectedToString =
+                "Friend{" +
+                        "name='" + "Joon" + '\'' +
+                        ", telefonnummer='" + "017612345678" + '\'' +
+                        ", spitzname='" + "Joonie" + '\'' +
+                        '}';
+        assertFalse(expectedToString.equals(actual.toString()));
+    }
 }
