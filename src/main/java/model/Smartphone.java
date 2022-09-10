@@ -1,21 +1,21 @@
 package model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Smartphone implements Radio, GPS{
 
     private String modells;
     private String manufatures;
-    private Contact [] constacts;
+    private ArrayList<Contact> contacts;
 
     public Smartphone(){
         super();
     }
 
-    public Smartphone(String modells, String manufactures, Contact[] contacts){
+    public Smartphone(String modells, String manufactures, ArrayList<Contact> contacts){
         this.modells = modells;
         this.manufatures = manufactures;
-        this.constacts = contacts;
+        this.contacts = contacts;
     }
 
     public String getModells() {
@@ -26,8 +26,8 @@ public class Smartphone implements Radio, GPS{
         return manufatures;
     }
 
-    public Contact[] getConstacts() {
-        return constacts;
+    public ArrayList<Contact> getContacts() {
+        return contacts;
     }
 
     public void setModells(String modells) {
@@ -38,8 +38,42 @@ public class Smartphone implements Radio, GPS{
         this.manufatures = manufatures;
     }
 
-    public void setConstacts(Contact[] constacts) {
-        this.constacts = constacts;
+    public void setContacts(ArrayList<Contact> contacts) {
+        this.contacts = contacts;
+    }
+    public void addContact(Contact contact){
+        contacts.add(contact);
+        setContacts(contacts);
+    }
+    public Contact getContact(int index){
+        if(index>=contacts.size() || index<0){
+            System.out.println("invalid index!");
+            return null;
+        }else{
+            return contacts.get(index);
+        }
+    }
+
+    public Contact getContactByName(String name){
+        int index = 0;
+        for(Contact contact:contacts){
+            if(contact.getName().equals(name)){
+                index = contacts.indexOf(contact);
+                break;
+            }
+        }
+        return getContact(index);
+    }
+
+    public void removeContactByName(String name){
+        int index = 0;
+        for(Contact contact:contacts){
+            if(contact.getName().equals(name)){
+                index = contacts.indexOf(contact);
+                break;
+            }
+        }
+        contacts.remove(index);
     }
 
     @Override
@@ -64,7 +98,7 @@ public class Smartphone implements Radio, GPS{
         return "Smartphone{" +
                 "modells='" + modells + '\'' +
                 ", manufatures='" + manufatures + '\'' +
-                ", constacts=" + Arrays.toString(constacts) +
+                ", constacts=" + contacts.toString() +
                 '}';
     }
 }
